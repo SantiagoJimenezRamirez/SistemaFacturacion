@@ -1,0 +1,12 @@
+<div class="m-4 mb-0 flex flex-col justify-center items-center">
+  <div class="w-full px-[20px]">
+    <p class="text-xl font-bold my-1">{{ labelText }}</p>
+    <div class="py-1 bg-[#e5e5e5] rounded-full w-full border border-black shadow form-group">
+      <input class="bg-[#e5e5e5] mx-5 my-1 border-none outline-none w-auto"
+             [type]="typeInput"
+             [placeholder]="placeHolder"
+             [(ngModel)]="value"
+             (blur)="onBlur($event)">
+    </div>          
+  </div>
+</div>
