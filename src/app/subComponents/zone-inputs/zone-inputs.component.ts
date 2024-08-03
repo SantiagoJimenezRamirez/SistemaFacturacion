@@ -20,6 +20,7 @@ export class ZoneInputsComponent implements ControlValueAccessor {
   @Input() labelText: string = 'Texto';
   @Input() typeInput: string = 'text';
   @Input() placeHolder: string = '';
+  @Input() pathImage: string = '../../../assets/icons/User.svg';
 
   value: any;
   onChange: any = () => {};

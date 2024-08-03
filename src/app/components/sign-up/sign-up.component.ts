@@ -1,37 +1,76 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ZoneInputsComponent } from '../../subComponents/zone-inputs/zone-inputs.component';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../../services/user.service';
+import { HttpClientModule } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ZoneInputsComponent, ReactiveFormsModule, CommonModule],
+  imports: [ZoneInputsComponent, ReactiveFormsModule, CommonModule, HttpClientModule],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
+  private role = 'Waiter';
   nextRoute = 'login';
-  
+
   registerForm = new FormGroup({
     'name': new FormControl('', Validators.required),
     'email': new FormControl('', [Validators.required, Validators.email]),
     'password': new FormControl('', Validators.required),
+    'username': new FormControl('', Validators.required),
+    'codeCompany': new FormControl('', Validators.required),
   });
-  
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
-  ngOnInit(): void { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private _userService: UserService
+  ) {}
+
+  ngOnInit(): void {}
+
+  showAlert(): void {
+    Swal.fire({
+      title: 'Success!',
+      text: 'You have successfully signed up!',
+      icon: 'success',
+      confirmButtonText: 'Cool'
+    });
+  }
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      console.log('Formulario enviado', this.registerForm.value);
-      this.signUp(); // Navegar a la siguiente ruta
+      const user = {
+        name: this.registerForm.get('name')?.value,
+        codeCompany: this.registerForm.get('codeCompany')?.value,
+        password: this.registerForm.get('password')?.value,
+        username: this.registerForm.get('username')?.value,
+        email: this.registerForm.get('email')?.value,
+        role: this.role,
+      };
+
+      console.log("User data to be sent:", user);
+
+      this._userService.register(user).subscribe(
+        response => {
+          console.log('Registration successful', response);
+          this.router.navigate([this.nextRoute]);
+        },
+        error => {
+          console.error('Registration failed', error);
+        }
+      );
+    } else {
+      console.log("Form is invalid");
     }
   }
 
-  signUp() {
-    this.router.navigateByUrl(this.nextRoute);
+  signUp(){
+    this.router.navigateByUrl(this.nextRoute)    
   }
 }
