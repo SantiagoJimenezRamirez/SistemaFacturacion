@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environments';
+import { environment } from '../../environments/environments';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -12,7 +12,6 @@ export class UserService {
   constructor(private http: HttpClient, private router: Router) {}
 
   register(user: any): Observable<any> {
-    console.log('User send is: ', user)
     return this.http.post(`${environment.apiUrl}/api/user/`, user);
   }
 

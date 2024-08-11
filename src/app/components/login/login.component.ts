@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ZoneInputsComponent } from "../../subComponents/zone-inputs/zone-inputs.component";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,7 @@ import { UserService } from '../../../services/user.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  nextRoute = 'home';
+  nextRoute = 'sign-up';
 
   loginForm = new FormGroup({
     'username': new FormControl('', Validators.required),
@@ -26,12 +26,13 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value)
+
       this._userService.login(this.loginForm.value).subscribe(
         response => {
-          console.log('Registration successful', response);
           localStorage.setItem('token', response.token)
-          this.router.navigate([this.nextRoute]);
+          localStorage.setItem('nameRestaurant', response.company.name)
+          localStorage.setItem('name', response.name)
+          this.router.navigate(['home']);
         },
         error => {
           console.error('Registration failed', error);

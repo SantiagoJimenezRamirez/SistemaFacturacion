@@ -1,0 +1,51 @@
+<div class="w-screen h-screen bg-[#8e868681] flex items-center justify-center">
+    <div class="w-auto h-auto p-8 bg-white rounded-2xl">
+      <div class="flex justify-end">
+        <button class="flex justify-center rounded-full w-8 h-8" (click)="closeForm($event)" style="border: 1px solid black;"><b class="text-xl">x</b></button>
+      </div>
+      <form class="mx-auto w-auto max-w-lg" [formGroup]="formProduct" (ngSubmit)="onSubmit()">
+        <div class="flex items-center justify-center">
+          <input
+            class="w-36 h-36 bg-gray-600 rounded-full flex items-center justify-center text-white cursor-pointer"
+            type="file"
+            formControlName="routeImg"
+            accept="image/*"
+          />
+        </div>
+        
+        <app-zone-inputs
+          [labelText]="'Name'"
+          [placeHolder]="'Burguer King'"
+          [typeInput]="'text'"
+          formControlName="name">
+        </app-zone-inputs>
+  
+        <app-zone-inputs
+          [labelText]="'Price'"
+          [placeHolder]="'19000'"
+          [typeInput]="'number'"
+          formControlName="price">
+        </app-zone-inputs>
+  
+        <div class="mx-9 m-4">
+          <p class="text-xl font-bold my-1">Category</p>
+          <select class="py-2 px-4 text-gray-500 w-full rounded-full bg-[#e5e5e5]" formControlName="category">
+            <option value="">Seleccione</option>
+            <option *ngFor="let category of categories" [value]="category.name">{{ category.name }}</option>
+          </select>
+        </div>
+        
+        <app-zone-inputs
+          [labelText]="'Description'"
+          [placeHolder]="'Burger with...'"
+          [typeInput]="'text'"
+          formControlName="description">
+        </app-zone-inputs>
+  
+        <div class="mx-9 m-4 mb-0">
+          <button class="w-full bg-[#ffd60a] h-full p-1 rounded-full hover:bg-[#ffc300]">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

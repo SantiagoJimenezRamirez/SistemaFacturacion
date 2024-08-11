@@ -1,1 +1,26 @@
-<p>products works!</p>
+<div class="flex max-w-screen">
+    <div class="h-full w-1/5 hidden lg:block">
+        <app-menu></app-menu>
+    </div>
+    
+    <div class="w-screen h-screen">
+        <app-header></app-header>
+        <div class="">
+            <div class="flex justify-end">
+                <button class="bg-[#18434E] text-white w-auto px-3 py-2 rounded-xl m-4 hover:bg-[#0f2e35]"
+                    (click)="showform = true">
+                    <b class="mx-3">New Product</b>
+                </button>
+            </div>
+            <div class=" overflow-x-auto w-full">
+                <app-products-menu class="w-full"
+                    [TitleContainer]="'Inventory'"
+                ></app-products-menu>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="fixed inset-0 bg-black bg-opacity-50 z-50 w-full h-full" *ngIf="showform">
+    <app-forms (close)="handleClose($event)"></app-forms>
+</div>

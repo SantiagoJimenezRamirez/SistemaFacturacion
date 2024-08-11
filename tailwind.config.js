@@ -4,8 +4,11 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'custom-bottom': '0 4px 6px -1px rgba(0, 0, 0, .5)', // sombra inferior personalizada
+      },
+    },
   },
   plugins: [],
 }
-

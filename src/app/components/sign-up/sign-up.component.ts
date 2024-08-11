@@ -3,14 +3,13 @@ import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } 
 import { Router } from '@angular/router';
 import { ZoneInputsComponent } from '../../subComponents/zone-inputs/zone-inputs.component';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../../../services/user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [ZoneInputsComponent, ReactiveFormsModule, CommonModule, HttpClientModule],
+  imports: [ZoneInputsComponent, ReactiveFormsModule, CommonModule],
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
@@ -27,7 +26,6 @@ export class SignUpComponent implements OnInit {
   });
 
   constructor(
-    private formBuilder: FormBuilder,
     private router: Router,
     private _userService: UserService
   ) {}
@@ -54,11 +52,8 @@ export class SignUpComponent implements OnInit {
         role: this.role,
       };
 
-      console.log("User data to be sent:", user);
-
       this._userService.register(user).subscribe(
         response => {
-          console.log('Registration successful', response);
           this.router.navigate([this.nextRoute]);
         },
         error => {
@@ -66,7 +61,6 @@ export class SignUpComponent implements OnInit {
         }
       );
     } else {
-      console.log("Form is invalid");
     }
   }
 
