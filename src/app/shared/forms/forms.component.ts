@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CategoriesService } from '../../services/categories.service';
 import { FoodService } from '../../services/food.service';
 import { ZoneInputsComponent } from '../../subComponents/zone-inputs/zone-inputs.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forms',
@@ -58,8 +59,24 @@ export class FormsComponent implements OnInit {
       };
 
       this._foodService.newFood(food).subscribe({
-        next: (response) => console.log('Product created:', response),
-        error: (error) => console.error('Error creating product:', error)
+        next: (response : any) => {
+          console.log('Product created:', response);
+          Swal.fire({
+            title: 'Producto creado',
+            text: response.msg,
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          });
+        },
+        error: (error) => {
+          console.error('Error creating product:', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'Hubo un error al crear el producto. Por favor, inténtalo de nuevo.',
+            icon: 'error',
+            confirmButtonText: 'Aceptar'
+          });
+        }
       });
     } else {
       console.error('Form is not valid:', this.formProduct.errors);

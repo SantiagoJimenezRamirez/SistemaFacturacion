@@ -10,4 +10,8 @@
              (blur)="onBlur($event)">
     </div>          
   </div>
+  <div class="w-full px-[20px]">
+    <!-- Mensaje de error en rojo -->
+    <p *ngIf="showError" class="text-red-500 text-xs mt-1"> {{messageEmergent}} </p>
+  </div>
 </div>

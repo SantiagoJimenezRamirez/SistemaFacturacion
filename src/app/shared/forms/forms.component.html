@@ -1,7 +1,7 @@
 <div class="w-screen h-screen bg-[#8e868681] flex items-center justify-center">
     <div class="w-auto h-auto p-8 bg-white rounded-2xl">
       <div class="flex justify-end">
-        <button class="flex justify-center rounded-full w-8 h-8" (click)="closeForm($event)" style="border: 1px solid black;"><b class="text-xl">x</b></button>
+        <button class="flex items-center justify-center rounded-full w-8 h-8" (click)="closeForm($event)" style="border: 1px solid black;"><img src="svg/x.svg" alt=""></button>
       </div>
       <form class="mx-auto w-auto max-w-lg" [formGroup]="formProduct" (ngSubmit)="onSubmit()">
         <div class="flex items-center justify-center">

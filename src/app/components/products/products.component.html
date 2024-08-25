@@ -1,20 +1,20 @@
 <div class="flex max-w-screen">
-    <div class="h-full w-1/5 hidden lg:block">
+    <div class="h-full w-[8vh] hidden lg:block">
         <app-menu></app-menu>
-    </div>
+      </div>
     
-    <div class="w-screen h-screen">
+    <div class="w-full h-screen overflow-y-auto">
         <app-header></app-header>
-        <div class="">
+        <div class="overflow-hidden">
             <div class="flex justify-end">
                 <button class="bg-[#18434E] text-white w-auto px-3 py-2 rounded-xl m-4 hover:bg-[#0f2e35]"
                     (click)="showform = true">
                     <b class="mx-3">New Product</b>
                 </button>
             </div>
-            <div class=" overflow-x-auto w-full">
+            <div class=" overflow-hidden max-w-full">
                 <app-products-menu class="w-full"
-                    [TitleContainer]="'Inventory'"
+                    [TitleContainer]="'Productos del Menu'"
                 ></app-products-menu>
             </div>
             

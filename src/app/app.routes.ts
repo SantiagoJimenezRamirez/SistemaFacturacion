@@ -12,13 +12,14 @@ import { ProductsComponent } from './components/products/products.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FormsComponent } from './shared/forms/forms.component';
 import { ProductsMenuComponent } from './components/products-menu/products-menu.component';
-import { ButtonsSectionMenuComponent } from './subComponents/buttons-section-menu/buttons-section-menu.component';
+import { LoginGuard } from './guards/login.guard';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'sign-up', component: SignUpComponent },
-    { path: 'pruebas', component: ProductsMenuComponent },
+    { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+    { path: 'sign-up', component: SignUpComponent, canActivate: [LoginGuard] },
+    { path: 'pruebas', component: ProductsMenuComponent, canActivate: [AuthGuard] },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
     { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },

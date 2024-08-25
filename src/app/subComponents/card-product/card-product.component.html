@@ -1,0 +1,7 @@
+<div *ngFor="let filter of filteredProducts" class="w-[25%] sm:w-[15%] h-[35%] text-center my-4 bg-white m-3"
+    (click)="selectProduct(filter)">
+    <div class="w-full h-[70%] bg-red-700"></div>
+    <div class="h-auto bg-white">
+        <p class="text-sm py-3"> {{ filter.name }} </p>
+    </div>
+</div>

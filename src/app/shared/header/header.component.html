@@ -1,4 +1,14 @@
-<div class="w-full h-12 bg-[#1A1D29] flex justify-between px-4 items-center">
-    <p class="text-xl text-white"><b>{{nameScreen}}</b></p>
+<div class="w-full min-h-[7vh] h-[50px] bg-[#1A1D29] flex justify-between px-4 items-center">
+    <div class="flex"> <div class="relative inline-block">
+        <select class="appearance-none bg-transparent border-none cursor-pointer w-full h-full opacity-0 absolute top-0 left-0" (change)="handleOptionChange($event)">
+          <option value="home">Dashboard</option>
+          <option value="orders">Pedidos</option>
+          <option value="products">Productos</option>
+          <option value="inventory">Inventario</option>
+          <option value="profile">Perfil</option>
+        </select>
+        <img class="px-2 md:hidden" src="./svg/listMenu.svg" alt="Menu">
+      </div>
+      <p class="text-xl text-white"><b>{{nameScreen}}</b></p></div>
     <app-log-out></app-log-out>
 </div>

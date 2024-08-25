@@ -21,8 +21,9 @@
     "@angular/platform-browser-dynamic": "^18.1.0",
     "@angular/router": "^18.1.0",
     "@sweetalert2/ngx-sweetalert2": "^12.4.0",
+    "jspdf": "^2.5.1",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.12.3",
+    "sweetalert2": "^11.12.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
@@ -31,6 +32,7 @@
     "@angular/cli": "^18.1.1",
     "@angular/compiler-cli": "^18.1.0",
     "@types/jasmine": "~5.1.0",
+    "@types/printer": "^0.4.5",
     "autoprefixer": "^10.4.19",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",

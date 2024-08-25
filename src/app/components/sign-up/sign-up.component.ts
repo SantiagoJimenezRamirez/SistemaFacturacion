@@ -54,10 +54,26 @@ export class SignUpComponent implements OnInit {
 
       this._userService.register(user).subscribe(
         response => {
-          this.router.navigate([this.nextRoute]);
+          Swal.fire({
+            title: 'Exito',
+            text: response.msg,
+            icon: 'success',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'ACEPTAR',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate([this.nextRoute]);
+            }
+          });
         },
         error => {
-          console.error('Registration failed', error);
+          Swal.fire({
+            title: 'Error',
+            text: 'Error en la creación de la cuenta',
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'ACEPTAR',
+          })
         }
       );
     } else {

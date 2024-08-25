@@ -19,12 +19,26 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormsModule, ReactiveFormsModu
 export class ZoneInputsComponent implements ControlValueAccessor {
   @Input() labelText: string = 'Texto';
   @Input() typeInput: string = 'text';
+  @Input() messageEmergent:string = '';
   @Input() placeHolder: string = '';
   @Input() pathImage: string = '../../../assets/icons/User.svg';
 
   value: any;
   onChange: any = () => {};
   onTouched: any = () => {};
+  showError: boolean = false; // Controla la visualización del mensaje de error
+
+  ngOnInit(): void {
+    this.startValidationTimer();
+  }
+
+  startValidationTimer(): void {
+    setTimeout(() => {
+      if (!this.value) {
+        this.showError = true;
+      }
+    }, 5000); // 5000 ms = 5 segundos
+  }
 
   writeValue(value: any): void {
     this.value = value;
@@ -43,6 +57,10 @@ export class ZoneInputsComponent implements ControlValueAccessor {
   }
 
   onBlur(event: any): void {
+    const inputValue = (event.target as HTMLInputElement).value;
+    if (inputValue) {
+      this.showError = false; // Oculta el mensaje de error si el campo se llena
+    }
     this.onTouched();
     this.onChange(event.target.value);
   }

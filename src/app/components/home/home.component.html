@@ -1,8 +1,43 @@
-<div class="flex">
-    <div class="h-full w-1/5">
+<div class="flex max-w-screen">
+    <div class="h-full w-[8vh] hidden lg:block">
         <app-menu></app-menu>
     </div>
-    <div class="w-4/5 h-auto">
+    <div class="w-full h-screen">
         <app-header></app-header>
+        <div class="flex ">
+            <div class="w-full overflow-y-auto bg-slate-500 p-4">
+                <div class="h-[88vh] w-full ">
+                    <div class="flex justify-between items-center bg-red-800 h-[30vh] w-full p-4">
+                        <div
+                            class="m-4 w-[30%] h-full bg-zinc-50 rounded-lg flex items-center justify-center text-center">
+                            AQUI VAN LAS VENTAS
+                        </div>
+                        <div
+                            class="m-4 w-[30%] h-full bg-zinc-50 rounded-lg flex items-center justify-center text-center">
+                            AQUI LAS ORDENES HECHAS EN EL DIA
+                        </div>
+                        <div
+                            class="m-4 w-[30%] h-full bg-zinc-50 rounded-lg flex items-center justify-center text-center">
+                            AQUI LAS COMPRAS HECHAS
+                        </div>
+
+                    </div>
+                    <div class="h-[60%] w-full bg-pink-600 mt-4 p-4 px-8">
+                        <div
+                            class=" bg-amber-900 w-full h-full rounded-xl flex justify-center items-center text-center">
+                            AQUI VA LA GRAFICA DE REPORTES MENSUALES
+                        </div>
+                    </div>
+                    <div class="h-[60%] w-full bg-pink-600 mt-4 p-4 px-8">
+                        <div class=" bg-amber-900 w-full h-full rounded-xl flex justify-center items-center text-center">
+                            AQUI VAN LOS PEDIDOS DIARIOS
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-[30%] h-[93vh] bg-green-400 p-4">
+
+            </div>
+        </div>
     </div>
 </div>

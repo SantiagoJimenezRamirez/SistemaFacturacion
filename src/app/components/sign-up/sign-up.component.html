@@ -13,10 +13,11 @@
                 </div>
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                   <app-zone-inputs class="w-9"
-                    [pathImage]="'../../../assets/icons/User.svg'"
+                    [pathImage]="'/User.svg'"
                     [labelText]="'Name'"
                     [placeHolder]="'Santiago Jimenez Ramirez'"
                     [typeInput]="'text'"
+                    [messageEmergent]="'Indique un nombre valido'"
                     formControlName="name">
                   </app-zone-inputs>
 
@@ -24,6 +25,7 @@
                     [labelText]="'Username'"
                     [placeHolder]="'Santiago JR'"
                     [typeInput]="'text'"
+                    [messageEmergent]="'Indique un usuario valido'"
                     formControlName="username">
                   </app-zone-inputs>
                 
@@ -31,6 +33,7 @@
                     [labelText]="'Email'"
                     [placeHolder]="'example@gmail.com'"
                     [typeInput]="'email'"
+                    [messageEmergent]="'Indique un email valido'"
                     formControlName="email">
                   </app-zone-inputs>
 
@@ -45,6 +48,7 @@
                     [labelText]="'Code Company'"
                     [placeHolder]="'A1B2C3D4'"
                     [typeInput]="'text'"
+                    [messageEmergent]="'Indique un codigo valido'"
                     formControlName="codeCompany">
                   </app-zone-inputs>
                 
